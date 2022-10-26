@@ -145,6 +145,7 @@ class SinglyLinkedList {
         }
         this.head = prevNode
         // Write your hypothesis on the time complexity of this method here
+        // o(n)
     }
 
 }
@@ -185,8 +186,16 @@ class DoublyLinkedList {
         // How do the implementation for singly and doubly vary if at all?
 
         // Your code here
+        let one = this.head;
+        let two = this.tail;
+        while(one !== two && one.next !== two){
+            one = one.next;
+            two = two.prev;
+        }
+        return one;
 
         // Write your hypothesis on the time complexity of this method here
+        // time compexity: o(n);
     }
 
     reverse() {
@@ -194,7 +203,31 @@ class DoublyLinkedList {
 
         // Your code here
 
+
+        // let arr = []
+        // let current = this.head
+        // while (current) {
+        //     arr.push(current.value)
+        //     current = current.next
+        // }
+        // const newList = new SinglyLinkedList()
+        // while (arr.length > 0) {
+        //     newList.addToTail(arr.pop())
+        // }
+        // return newList
+
+
+        const newList = new DoublyLinkedList();
+        let current = this.tail;
+        while(current !== null) {
+            // console.log(current.value);
+            newList.addToTail(current.value);
+            current = current.prev;
+        }
+        return newList;
+
         // Write your hypothesis on the time complexity of this method here
+    //o(n)
     }
 
     reverseInPlace() {
@@ -202,7 +235,19 @@ class DoublyLinkedList {
 
         // Your code here
 
+        let temp = null;
+        let current = this.head;
+        this.tail = this.head;
+
+        while(current){
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+        this.head = temp.prev;
         // Write your hypothesis on the time complexity of this method here
+    // o(n);
     }
 
 }
