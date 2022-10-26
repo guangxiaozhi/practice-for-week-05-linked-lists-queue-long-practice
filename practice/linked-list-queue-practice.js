@@ -134,19 +134,16 @@ class SinglyLinkedList {
         // the original linked list reversed in place
 
         // Your code here
-        let prev = null
-        let second = null
+        let prevNode = null
+        let nextNode = null
         let current = this.head
         while (current !== null) {
-            second = current.next
-            current.next = prev
-            prev = current
-            current = second
-            this.head = current
-            console.log(`second: ${second.value}`)
-            console.log(`prev: ${prev.value}`)
-            console.log(`current: ${current.value}`)
+            nextNode = current.next
+            current.next = prevNode
+            prevNode = current
+            current = nextNode
         }
+        this.head = prevNode
         // Write your hypothesis on the time complexity of this method here
     }
 
