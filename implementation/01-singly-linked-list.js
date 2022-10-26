@@ -56,13 +56,13 @@ class SinglyLinkedList {
 
     removeFromHead() {
         // Remove node at head
-        if (!this.head) {
-            return undefined
+        if (this.head) {
+            let oldHead = this.head
+            this.head = this.head.next
+            this.length--
+            return oldHead
         }
-        let oldHead = this.head
-        this.head = this.head.next
-        this.length--
-        return oldHead
+
 
         // Your code here
 
